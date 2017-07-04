@@ -5,6 +5,11 @@ package cn.edu.seu;
  */
 public class TestPermutation {
 
+    public static void main(String[] args) {
+        test(3);
+    }
+
+
     public static void test(int n) {
         String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String elements = alphabet.substring(0, n);
