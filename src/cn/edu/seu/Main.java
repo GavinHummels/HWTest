@@ -2,6 +2,10 @@ package cn.edu.seu;
 
 import java.util.*;
 
+interface IMessage {
+
+}
+
 public class Main {
 
     private static List<String> permList = new ArrayList<>();
@@ -56,14 +60,16 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        permtest("", "abcd");
-//        System.out.println(permList.size());
-//        for (String str : permList) {
-//            System.out.println(str);
-//        }
+
+        Scanner scanner = new Scanner(System.in);
+
+
 
         int[] source = {1, 2, 3, 4};
-        permtest(source, 0, 4);
+        int[] out = {4, 3, 2, 1};
+        System.out.println("isLegal: " + validStack(source, out, 4));
+//        permtest(source, 0, 4);
+
 //        System.out.println(permIntList.size());
 //        for (int[] ints : permIntList) {
 //            for(int i:ints){
@@ -80,7 +86,7 @@ public class Main {
         if (start == n - 1) {
             int[] temp = result.clone();
             permIntList.add(temp);
-            for(int i:temp){
+            for (int i : temp) {
                 System.out.print(i);
             }
             System.out.print("\n");
@@ -99,10 +105,38 @@ public class Main {
         array[j] = temp;
     }
 
-    public static void validStack(int[] input,int[] output) {
+    public static boolean validStack(int[] input, int[] output, int n) {
         Stack<Integer> stack = new Stack<>();
-
-        stack.size();
+        int i = 0;
+        int j = 0;
+        while (i < n) {
+            if (input[i] == output[j]) {
+                i++;
+                j++;
+            } else {
+                if (stack.isEmpty()) {
+                    stack.push(input[i]);
+                } else {
+                    int top = stack.peek();
+                    if (top == output[j]) {
+                        j++;
+                        stack.pop();
+                    } else {
+                        stack.push(input[i]);
+                        i++;
+                    }
+                }
+            }
+        }
+        while (!stack.isEmpty() && j < n) {
+            int top = stack.pop();
+            if (output[j] == top) {
+                j++;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
