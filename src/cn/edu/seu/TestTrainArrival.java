@@ -2,11 +2,8 @@ package cn.edu.seu;
 
 import java.util.*;
 
-interface IMessage {
 
-}
-
-public class Main {
+public class TestTrainArrival {
 
     private static List<String> permList = new ArrayList<>();
 
@@ -63,11 +60,27 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        while (scanner.hasNext()) {
+            int n = scanner.nextInt();
+            int[] in = new int[n];
+            for (int i = 0; i < n; i++) {
+                in[i] = scanner.nextInt();
+            }
+            permtest(in, 0, n);
+            for (int[] out : permIntList) {
+                if (validStack(in, out, n)) {
+                    for (int i : out) {
+                        System.out.print(i);
+                    }
+                    System.out.println();
+                }
+            }
 
+        }
 
-        int[] source = {1, 2, 3, 4};
-        int[] out = {4, 3, 2, 1};
-        System.out.println("isLegal: " + validStack(source, out, 4));
+//        int[] source = {1, 2, 3, 4};
+//        int[] out = {4, 3, 2, 1};
+//        System.out.println("isLegal: " + validStack(source, out, 4));
 //        permtest(source, 0, 4);
 
 //        System.out.println(permIntList.size());
@@ -86,10 +99,10 @@ public class Main {
         if (start == n - 1) {
             int[] temp = result.clone();
             permIntList.add(temp);
-            for (int i : temp) {
-                System.out.print(i);
-            }
-            System.out.print("\n");
+//            for (int i : temp) {
+//                System.out.print(i);
+//            }
+//            System.out.print("\n");
             return;
         }
         for (int i = start; i < n; i++) {

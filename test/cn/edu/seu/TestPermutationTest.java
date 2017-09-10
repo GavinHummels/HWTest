@@ -12,6 +12,6 @@ public class TestPermutationTest extends TestCase {
 
     @Test
     public void testTest1() throws Exception {
-        TestPermutation.test(3);
+//        TestPermutation.mytest(3);
     }
 }
